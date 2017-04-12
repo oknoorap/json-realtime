@@ -1,2 +1,2 @@
 # :pencil: JSON Realtime
-Read and Write JSON realtime.
+Read and Write JSON in realtime.
