@@ -1,6 +1,6 @@
 {
   "name": "json-realtime",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Read and Write JSON in realtime",
   "main": "index.js",
   "scripts": {
