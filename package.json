@@ -1,0 +1,22 @@
+{
+  "name": "json-realtime",
+  "version": "1.0.0",
+  "description": "Read and Write JSON in realtime",
+  "main": "index.js",
+  "scripts": {
+    "test": "xo && ava --verbose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oknoorap/json-realtime.git"
+  },
+  "keywords": [
+    "json"
+  ],
+  "author": "Ribhararnus Pracutian <oknoorap@gmail.com> (https://www.oknoorap.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/oknoorap/json-realtime/issues"
+  },
+  "homepage": "https://github.com/oknoorap/json-realtime#readme"
+}
