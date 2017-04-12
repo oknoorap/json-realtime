@@ -18,5 +18,14 @@
   "bugs": {
     "url": "https://github.com/oknoorap/json-realtime/issues"
   },
-  "homepage": "https://github.com/oknoorap/json-realtime#readme"
+  "homepage": "https://github.com/oknoorap/json-realtime#readme",
+  "devDependencies": {
+    "ava": "^0.19.1",
+    "xo": "^0.18.1"
+  },
+  "xo": {
+    "esnext": true,
+    "space": true,
+    "semicolon": false
+  }
 }
