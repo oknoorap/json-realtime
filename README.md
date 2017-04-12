@@ -5,11 +5,12 @@ Read and Write JSON in realtime.
 Using NPM:  
 `npm install json-realtime`
 
-Using Yarn:
+Using Yarn:  
 `yarn add json-realtime`
 
 # Usage
-This example is using ES6 with babel
+Example codes below is using ES6 with babel
+
 ```javascript
 import jsonr from 'json-realtime'
 
