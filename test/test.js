@@ -2,7 +2,7 @@ import {readFile, writeFileSync, unlinkSync} from 'fs'
 import test from 'ava'
 import jsonRealtime from '../index'
 
-const exampleFile = './example.json'
+const exampleFile = './test/example.json'
 const jsonFile = () => {
   return new Promise(resolve => {
     readFile(exampleFile, 'ascii', (err, data) => {
@@ -35,39 +35,53 @@ test('example.version is 1.0.0', t => {
   t.is(json.version, '1.0.0')
 })
 
-test('example.version should be changed', t => {
+test('example.version (string) should be changed', t => {
   json.version = '1.1.0'
+  t.pass()
+})
+
+test('example.greetings (array) should be changed', t => {
   json.greetings = ['hello', 'world']
+  t.pass()
+})
+
+test('example.object (object) should be changed', t => {
   json.object = {
     yo: true
   }
+  t.pass()
+})
+
+test('example.object2.object.nested (nested object) should be changed', t => {
   json.object2.object.nested = true
   t.pass()
 })
 
 test('example.version is 1.1.0', async t => {
-  await jsonFile().then(jsonStr => {
-    const jsonObj = JSON.parse(jsonStr)
-    t.is(json.version, jsonObj.version)
-    t.is(jsonObj.version, '1.1.0')
-  })
+  await jsonFile()
+    .then(jsonStr => {
+      const jsonObj = JSON.parse(jsonStr)
+      t.is(json.version, jsonObj.version)
+      t.is(jsonObj.version, '1.1.0')
+    })
 })
 
 test('example.greetings is array', async t => {
-  await jsonFile().then(jsonStr => {
-    const jsonObj = JSON.parse(jsonStr)
-    t.is(json.greetings[0], jsonObj.greetings[0])
-    t.is(json.greetings[1], jsonObj.greetings[1])
-    t.is(jsonObj.greetings[0], 'hello')
-    t.is(jsonObj.greetings[1], 'world')
-  })
+  await jsonFile()
+    .then(jsonStr => {
+      const jsonObj = JSON.parse(jsonStr)
+      t.is(json.greetings[0], jsonObj.greetings[0])
+      t.is(json.greetings[1], jsonObj.greetings[1])
+      t.is(jsonObj.greetings[0], 'hello')
+      t.is(jsonObj.greetings[1], 'world')
+    })
 })
 
 test('example.object.yo is exists', async t => {
   await jsonFile()
     .then(jsonStr => {
       const jsonObj = JSON.parse(jsonStr)
-      t.is(true(json.object.yo, jsonObj.object.yo)
+      t.is(json.object.yo, jsonObj.object.yo)
       t.is(typeof jsonObj, 'object')
       t.is(jsonObj.object.yo, true)
     })
