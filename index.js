@@ -12,30 +12,27 @@ module.exports = filename => {
       writeFileSync(filename, JSON.stringify(jsonFile), 'utf-8')
     }
 
-    const watcher = object => {
-      const json = {}
-      for (const key in object) {
-        if (Object.prototype.hasOwnProperty.call(object, key)) {
-          Object.defineProperty(json, key, {
-            get: () => {
-              let value = object[key]
-              if (typeof value === 'object' && !Array.isArray(value)) {
-                value = watcher(value)
-              }
-              return value
-            },
+    const proxyWatcher = object => {
+      const validator = {
+        get: (obj, key) => {
+          let value = object[key]
+          if (typeof value === 'object' && !Array.isArray(value)) {
+            value = proxyWatcher(value)
+          }
+          return value
+        },
 
-            set: value => {
-              object[key] = value
-              saveFile()
-            }
-          })
+        set: (obj, key, value) => {
+          object[key] = value
+          saveFile()
+          return true
         }
       }
-      return json
+
+      return new Proxy({}, validator)
     }
 
-    return watcher(jsonFile)
+    return proxyWatcher(jsonFile)
   } catch (err) {
     throw new Error(err)
   }
