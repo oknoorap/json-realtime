@@ -97,6 +97,23 @@ test('example.object2.object.nested is true', async t => {
     })
 })
 
+test('`mynumber` is not exists', t => {
+  t.false(json.mynumber)
+})
+
+test('example.mynumber should be changed', t => {
+  json.mynumber = 10
+  t.pass()
+})
+
+test('example.mynumber is 10', async t => {
+  await jsonFile()
+    .then(jsonStr => {
+      const jsonObj = JSON.parse(jsonStr)
+      t.is(jsonObj.mynumber, 10)
+    })
+})
+
 // Delete `example.json` after test
 test.after(() => {
   unlinkSync(exampleFile)
