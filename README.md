@@ -27,14 +27,17 @@ console.log(json.greetings)
 // Set greetings
 json.greetings = 'hello'
 
+// Set non existing
+json.mynumber = 10
+
 // Return 'hello'
 console.log(json.greetings)
 
 /**
 * Your current file right now
-* { "greetings": "hello" }
+* { "greetings": "hello", "mynumber": 10 }
 */
 ```
 
 # License
-MIT (c) [https://github.com/oknoorap](oknoorap)
+MIT © [oknoorap](https://github.com/oknoorap)
