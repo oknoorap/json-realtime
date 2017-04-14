@@ -98,7 +98,7 @@ test('example.object2.object.nested is true', async t => {
 })
 
 test('`mynumber` is not exists', t => {
-  t.false(json.mynumber)
+  t.is(json.mynumber, undefined)
 })
 
 test('example.mynumber should be changed', t => {
