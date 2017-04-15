@@ -1,6 +1,6 @@
 const {existsSync, writeFileSync} = require('fs')
 
-module.exports = filename => {
+module.exports = (filename, prettify = true, indent = 2) => {
   if (!existsSync(filename)) {
     throw new Error('Invalid file.')
   }
@@ -9,7 +9,13 @@ module.exports = filename => {
     const jsonFile = require(filename)
 
     const saveFile = () => {
-      writeFileSync(filename, JSON.stringify(jsonFile), 'utf-8')
+      let jsonStr = JSON.stringify(jsonFile)
+
+      if (prettify) {
+        jsonStr = JSON.stringify(jsonFile, null, indent)
+      }
+
+      writeFileSync(filename, jsonStr, 'utf-8')
     }
 
     const proxyWatcher = object => {
