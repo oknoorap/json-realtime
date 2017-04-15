@@ -1,4 +1,4 @@
-const {existsSync, writeFileSync} = require('fs')
+const {existsSync, readFileSync, writeFileSync} = require('fs')
 
 module.exports = (filename, prettify = true, indent = 2) => {
   if (!existsSync(filename)) {
@@ -6,7 +6,7 @@ module.exports = (filename, prettify = true, indent = 2) => {
   }
 
   try {
-    const jsonFile = require(filename)
+    const jsonFile = JSON.parse(readFileSync(filename, 'ascii'))
 
     const saveFile = () => {
       let jsonStr = JSON.stringify(jsonFile)
