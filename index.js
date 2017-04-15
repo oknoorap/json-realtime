@@ -35,7 +35,7 @@ module.exports = (filename, prettify = true, indent = 2) => {
         }
       }
 
-      return new Proxy({}, validator)
+      return new Proxy(jsonFile, validator)
     }
 
     return proxyWatcher(jsonFile)
