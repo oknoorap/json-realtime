@@ -1,16 +1,16 @@
 # :pencil: JSON Realtime
-Read and Write JSON in realtime. You don't need to open and write json twice. It's just magic. It's support nested object too.
+Read and Write JSON in realtime. You don't need to open and write json file twice. It's just magic. It's support nested object too.
 
 # Install
-Using NPM:  
-`npm install json-realtime`
+```bash
+# npm
+npm install json-realtime --save
 
-Using Yarn:  
-`yarn add json-realtime`
+# yarn
+yarn add json-realtime
+```
 
 # Usage
-Example codes below is using ES6 with babel
-
 ```javascript
 import jsonr from 'json-realtime'
 
